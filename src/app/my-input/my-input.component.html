@@ -1,0 +1,7 @@
+<label>Email</label>
+<input #emailInput type="text"
+[value]='value'
+[disabled]="disabled"
+(input)="onChange($event.target.value)"
+(blur)="onTouched()"
+class="form-control">

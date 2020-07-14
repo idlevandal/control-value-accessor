@@ -1,0 +1,30 @@
+<ng-select #myDropdown
+  [items]="people$"
+  bindLabel="name"
+  bindValue="name"
+  [multiple]="true"
+  [(ngModel)]="bindSelectedPeople"
+  [disabled]="disabled"
+  (change)="onChange($event)"
+  [closeOnSelect]="false"
+  [searchable]="true"
+  placeholder="Select people">
+
+    <!-- <ng-template ng-label-tmp let-item='item'>
+      {{''}}
+    </ng-template> -->
+
+    <ng-template ng-header-tmp>
+      <div style="height: 30px;">
+        Selected count: {{selectedPeople.length}}
+      </div>
+      <div style="height: 40px;">
+        <a (click)="selectAll()" class="pointer btn-link text-primary mr-2"><small>Select all</small></a>
+        <a (click)="unselectAll()" class="pointer btn-link text-primary"><small>Unselect all</small></a>
+      </div>
+    </ng-template>
+
+    <!-- <ng-template ng-header-tmp>
+    </ng-template> -->
+    
+  </ng-select>

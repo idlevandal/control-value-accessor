@@ -1,0 +1,30 @@
+<div class="container mt-4">
+  <h2>Control Value Accessor</h2>
+  <form class="form" [formGroup]='loginForm' (ngSubmit)=save(loginForm)>
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" class="form-control" formControlName='name'>
+      <p class="text-danger" *ngIf="loginForm.get('name').touched && loginForm.get('name').hasError('required')"><small>Name is required</small></p>
+    </div>
+
+    <div class="form-group">
+      <app-my-input formControlName="email"></app-my-input>
+      <p class="text-danger" *ngIf="loginForm.get('email').touched && loginForm.get('email').hasError('required')"><small>Email is required</small></p>
+    </div>
+    
+    <div class="form-group">
+      <label class="mb-0">Customer</label>
+      <app-dropdown formControlName="dropdown"></app-dropdown>
+    <p class="text-danger" *ngIf="loginForm.get('dropdown').touched && loginForm.get('dropdown').hasError('required')"><small>Customer is required</small></p>
+    </div>
+    
+    <div class="form-group">
+      <button (click)="save()" type="submit" class="btn btn-success mr-2">Save</button>
+      <button (click)="disableAll()" class="btn btn-outline-danger mr-2">{{isEnabled ? 'Disable All' : 'Enable All'}}</button>
+      <button (click)="clear()" class="btn btn-outline-secondary">Clear</button>
+    </div>
+  </form>
+  <div class="form-group">
+  </div>
+  <pre>{{loginForm.value | json}}</pre>
+</div>
